@@ -72,17 +72,16 @@ namespace Motor {
     //% block="motor = | %motor Direction = | $direction speed = $pwmvalue"
     //% direction.shadow=timePicker
     //% pwmvalue.min=0 pwmvalue.max=255
-    //% pwmvalue.shadow=turnRatioPicker
     
     export function motor(motor: Motorlist, direction: Direction1, pwmvalue: number) {
         switch(motor){
             case 1: // M1电机控制
-                if (direction) { motor_i2cWrite(0x01, 255-pwmvalue); motor_i2cWrite(0x02, 0);}
-                else { motor_i2cWrite(0x02, 255-pwmvalue); motor_i2cWrite(0x01, 0); }
+                if (direction) { motor_i2cWrite(0x01,pwmvalue); motor_i2cWrite(0x02, 0);}
+                else { motor_i2cWrite(0x02,pwmvalue); motor_i2cWrite(0x01, 0); }
                 break;
             case 2: // M2电机控制
-                if (direction) { motor_i2cWrite(0x04, 255-pwmvalue); motor_i2cWrite(0x03, 0); }
-                else { motor_i2cWrite(0x03, 255-pwmvalue); motor_i2cWrite(0x04, 0); }
+                if (direction) { motor_i2cWrite(0x04,pwmvalue); motor_i2cWrite(0x03, 0); }
+                else { motor_i2cWrite(0x03,pwmvalue); motor_i2cWrite(0x04, 0); }
                 break;
         }
     }
