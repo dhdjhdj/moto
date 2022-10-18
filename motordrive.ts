@@ -79,8 +79,10 @@ namespace Motor {
     //% block="motor = | %motor Direction = | $direction speed = $pwmvalue"
     //% direction.shadow=timePicker
     //% pwmvalue.min=0 pwmvalue.max=255 
-    export function motor(motor: Motorlist, direction: Direction1, pwmvalue: number) {
-        switch (motor) {
+    export function motor(motor: Motorlist, direction: Direction1, pwmvalue: number)
+    {
+        switch (motor)
+        {
             case 1: // M1电机控制
                 if (direction) { motor_i2cWrite(0x01, pwmvalue); motor_i2cWrite(0x02, 0); }
                 else { motor_i2cWrite(0x02, pwmvalue); motor_i2cWrite(0x01, 0); }
@@ -92,16 +94,20 @@ namespace Motor {
         }
     }
 
-    //% block="RGB = |%place rad   = |$arg1 green =|$arg2 blue  = |$arg3"
-    export function led_rgb(place:LED_rgb_L_R,arg1: number, arg2: number,arg3: number) {
-        switch(place){
+    //% block="RGB = %place rad   = $arg1 green =$arg2 blue  = $arg3"
+    //% direction.shadow=timePicker
+    //% pwmvalue.min=0 pwmvalue.max=1 
+    export function led_rgb(place: LED_rgb_L_R, arg1: number, arg2: number, arg3: number)
+    {
+        switch (place)
+        {
             case 0: {motor_i2cWrite(0x09, arg1);motor_i2cWrite(0x0a, arg2);motor_i2cWrite(0x0b, arg3);} 
                     break;
             case 1: {motor_i2cWrite(0x0c, arg1);motor_i2cWrite(0x0d, arg2);motor_i2cWrite(0x0e, arg3);} 
                     break;
-            }
+        }
    
-       }
+    }
 }
 
 function motor_i2cWrite(reg: number, value: number) 
