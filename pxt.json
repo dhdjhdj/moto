@@ -1,27 +1,23 @@
 {
-    "name": "Motordrive",
-    "description": "",
+    "name": "pxt-k-bit",
+    "version": "0.0.0",
+    "description": "keyestudio k-bit car for microbit",
     "dependencies": {
         "core": "*",
-        "radio": "*",
+        "neopixel": "github:mworkfun/pxt-neopixel-bluetooth",
+        "pxt-ir-remote": "github:mworkfun/pxt-ir-remote#d38780f97e1703f099aa5c06e40966968fa15235",
         "microphone": "*"
     },
     "files": [
-        "main.blocks",
-        "main.ts",
         "README.md",
-        "motordrive.ts",
-        "main.py"
+        "main.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
-    "targetVersions": {
-        "target": "5.0.12",
-        "targetId": "microbit"
-    },
+    "public": true,
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
